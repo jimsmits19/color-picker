@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        body {
+            background-color: black; /*as the midnight sun*/
+            color:white;
+        }
+        div {
+            width:100%;
+            height:99px;
+        }
+    </style>
+</head>
+<body>
+    <label for="red">R</label>
+    <input type="range" id="r" name="red" min="0" max="255" value="0" onchange="changeColor(this)"/>
+    <label for="red">G</label>
+    <input type="range" id="g" name="green" min="0" max="255" value="0" onchange="changeColor(this)" />
+    <label for="red">B</label>
+    <input type="range" id="b" name="blue" min="0" max="255" value="0" onchange="changeColor(this)" />
+    <label for="red">A</label>
+    <input type="range" id="a" name="alpha" min="0" max="10" value="10" onchange="changeAlpha(this)" />
+    <div id="pane">
+
+    </div>
+    <script>
+        let rgba = {r:0,g:0,b:0,a:100}
+        
+        function changeColor(sender) {
+            rgba[sender.id] = sender.value;
+            bindColor();
+        }
+
+        function changeAlpha(sender) {
+            rgba[sender.id] = sender.value * .1;
+            bindColor();
+        }
+        
+        function bindColor() {
+            document.getElementById('pane').style.backgroundColor = `rgba(${rgba.r},${rgba.g},${rgba.b},${rgba.a})`;
+        }
+
+    </script>
+</body>
+</html>
